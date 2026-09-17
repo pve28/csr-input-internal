@@ -1,68 +1,120 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Input Proposal Internal - SIG</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIG - Input Internal TJSL</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
-<style>body{font-family:'Plus Jakarta Sans',sans-serif}.req{color:red}</style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Plus Jakarta Sans',sans-serif}
+  input,select,textarea{outline:none; transition:.2s}
+  input:focus,select:focus,textarea:focus{border-color:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.1)}
+</style>
 </head>
-<body class="bg-[#f5f7fb] min-h-screen">
-<div class="max-w-[650px] mx-auto p-4 md:p-6">
-  <div class="bg-[#0f172a] rounded-[20px] p-5 text-white flex justify-between">
-    <div class="flex gap-3 items-center"><div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center font-black">S</div><div><div class="font-extrabold text-sm">INPUT INTERNAL</div><div class="text-[10px] opacity-60">Staff CSR SIG - Baturaja</div></div></div>
-    <div class="text-[10px] bg-white/10 px-3 py-1.5 rounded-full self-center">V1 Input Only</div>
-  </div>
+<body class="bg-[#0a0f1f] min-h-screen relative overflow-x-hidden">
+<div class="fixed -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-red-600 to-orange-400 rounded-full blur-[130px] opacity-30 pointer-events-none"></div>
+<div class="fixed -bottom-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-indigo-600 to-cyan-400 rounded-full blur-[130px] opacity-20 pointer-events-none"></div>
 
-  <div class="bg-white rounded-[20px] p-6 border mt-4">
-    <h1 class="font-extrabold text-lg">Form Input Proposal (Internal)</h1>
-    <p class="text-[11px] text-gray-500">Hanya untuk Staff. Semua 12 field wajib + lampiran.</p>
-
-    <div class="mt-5 space-y-3 max-h-[75vh] overflow-y-auto pr-1">
-      <div><label class="text-[10px] font-bold">Staff Penginput <span class="req">*</span></label><input id="staff_name" placeholder="Nama Staff" value="Staff CSR" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div>
-      <div><label class="text-[10px] font-bold">Nama Program <span class="req">*</span></label><input id="nama_program" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div>
-      <div><label class="text-[10px] font-bold">Program APS <span class="req">*</span></label><input id="program_aps" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div>
-      <div><label class="text-[10px] font-bold">Pilar TPB <span class="req">*</span></label><select id="pilar_tpb" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"><option value="">Pilih</option><option>Sosial</option><option>Ekonomi</option><option>Lingkungan</option><option>Hukum & Tata Kelola</option></select></div>
-      <div><label class="text-[10px] font-bold">Prioritas TPB <span class="req">*</span></label><input id="prioritas_tpb" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div>
-      <div><label class="text-[10px] font-bold">Uraian Program <span class="req">*</span></label><textarea id="uraian_program" rows="2" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></textarea></div>
-      <div><label class="text-[10px] font-bold">Kegiatan <span class="req">*</span></label><input id="kegiatan" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div>
-      <div class="grid grid-cols-2 gap-2"><div><label class="text-[10px] font-bold">Provinsi <span class="req">*</span></label><input id="provinsi" value="Sumatera Selatan" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div><div><label class="text-[10px] font-bold">Kab/Kota <span class="req">*</span></label><input id="kab_kota" value="OKU" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div></div>
-      <div class="grid grid-cols-2 gap-2"><div><label class="text-[10px] font-bold">Kecamatan <span class="req">*</span></label><input id="kecamatan" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div><div><label class="text-[10px] font-bold">Kelurahan <span class="req">*</span></label><input id="kelurahan" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"></div></div>
-      <div><label class="text-[10px] font-bold">Kategori Wilayah <span class="req">*</span></label><select id="kategori_wilayah" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1"><option value="">Pilih</option><option>Ring 1</option><option>Ring 2</option><option>Ring 3</option><option>Non Ring</option></select></div>
-      <div><label class="text-[10px] font-bold">Nominal Rp <span class="req">*</span></label><input id="nominal" type="number" class="w-full border rounded-xl p-3 text-sm bg-gray-50 mt-1 font-bold"></div>
-      <div class="border-2 border-dashed rounded-xl p-3 bg-blue-50/30"><label class="text-[10px] font-bold">📎 Lampiran <span class="req">*</span></label><input id="f" type="file" class="w-full text-xs mt-1"></div>
+<!-- LOGIN -->
+<div id="loginScreen" class="min-h-screen flex items-center justify-center p-4 relative z-10">
+  <div class="w-full max-w-[400px] bg-white rounded-[28px] p-8 shadow-[0_20px_60px_rgba(0,0,0,.4)]">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-[#cc0000] flex items-center justify-center text-white font-black text-xl">S</div>
+      <div><div class="font-extrabold leading-none">SIG BATURAJA</div><div class="text-[10px] text-gray-500 tracking-widest font-bold">INPUT INTERNAL TJSL</div></div>
     </div>
+    <h2 class="font-extrabold text-2xl mt-6">Staff Login</h2>
+    <p class="text-[12px] text-gray-500 mt-1">Hanya untuk internal CSR</p>
+    <div class="mt-6 space-y-3">
+      <input id="user" placeholder="username: staff" class="w-full bg-[#f6f7f9] border rounded-xl p-3.5 text-sm">
+      <input id="pass" type="password" placeholder="password: sig123" class="w-full bg-[#f6f7f9] border rounded-xl p-3.5 text-sm">
+      <button onclick="login()" class="w-full bg-[#0a0f1f] text-white py-3.5 rounded-xl font-bold text-sm">Masuk →</button>
+      <div id="loginMsg" class="hidden text-[11px] text-center p-2.5 rounded-xl"></div>
+      <div class="text-[10px] text-gray-400 text-center pt-2">staff / sm / direktur / finance | pass: sig123</div>
+    </div>
+  </div>
+</div>
 
-    <button onclick="kirim()" id="btn" class="w-full bg-[#cc0000] text-white py-3.5 rounded-xl font-bold text-sm mt-4">Simpan Proposal</button>
-    <div id="msg" class="hidden mt-3 p-3 rounded-xl text-xs"></div>
-    <div class="text-center mt-3"><a href="#" onclick="alert('Buka Dashboard V9 untuk Approval')" class="text-[11px] text-blue-600 underline">Lihat Dashboard Approval V9 →</a></div>
+<!-- FORM KECE -->
+<div id="formScreen" class="hidden min-h-screen p-3 md:p-6 relative z-10">
+  <div class="max-w-[820px] mx-auto">
+    <div class="flex justify-between items-center mb-5">
+      <div class="flex items-center gap-3 text-white"><div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center font-black">S</div><div><div class="font-extrabold text-sm">INPUT INTERNAL</div><div class="text-[10px] opacity-60" id="who">STAFF</div></div></div>
+      <button onclick="logout()" class="text-[11px] bg-white text-black px-4 py-2 rounded-full font-bold">Logout</button>
+    </div>
+    <div class="bg-white rounded-[28px] p-5 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,.3)]">
+      <div class="flex justify-between">
+        <div><h1 class="font-extrabold text-[24px] leading-tight">Form Pengajuan Program TJSL</h1><p class="text-[12px] text-gray-500 mt-1">Semua * wajib. Form auto kosong setelah simpan.</p></div>
+        <div class="hidden md:flex gap-1.5 self-start"><div class="w-8 h-2 rounded-full bg-[#0a0f1f]"></div><div class="w-8 h-2 rounded-full bg-gray-200"></div></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mt-7">
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-[#f8f9fb] border p-4">
+            <div class="text-[10px] font-extrabold tracking-widest mb-3">📦 DETAIL PROGRAM</div>
+            <div class="space-y-3">
+              <div><label class="text-[10px] font-bold">Nama Program *</label><input id="nama_program" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div>
+              <div><label class="text-[10px] font-bold">Program APS *</label><input id="program_aps" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div>
+              <div class="grid grid-cols-2 gap-2">
+                <div><label class="text-[10px] font-bold">Pilar TPB *</label><select id="pilar_tpb" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"><option value="">Pilih</option><option>Sosial</option><option>Ekonomi</option><option>Lingkungan</option><option>Hukum & Tata Kelola</option></select></div>
+                <div><label class="text-[10px] font-bold">Prioritas TPB *</label><input id="prioritas_tpb" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div>
+              </div>
+              <div><label class="text-[10px] font-bold">Uraian Program *</label><textarea id="uraian_program" rows="3" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></textarea></div>
+              <div><label class="text-[10px] font-bold">Kegiatan *</label><input id="kegiatan" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-[#f8f9fb] border p-4">
+            <div class="text-[10px] font-extrabold tracking-widest mb-3">📍 LOKASI</div>
+            <div class="space-y-3">
+              <div class="grid grid-cols-2 gap-2"><div><label class="text-[10px] font-bold">Provinsi *</label><input id="provinsi" value="Sumatera Selatan" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div><div><label class="text-[10px] font-bold">Kab/Kota *</label><input id="kab_kota" value="OKU" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div></div>
+              <div class="grid grid-cols-2 gap-2"><div><label class="text-[10px] font-bold">Kecamatan *</label><input id="kecamatan" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div><div><label class="text-[10px] font-bold">Kelurahan *</label><input id="kelurahan" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"></div></div>
+              <div><label class="text-[10px] font-bold">Kategori Wilayah *</label><select id="kategori_wilayah" class="mt-1 w-full bg-white border rounded-xl p-3 text-sm"><option value="">Pilih</option><option>Ring 1</option><option>Ring 2</option><option>Ring 3</option><option>Non Ring</option></select></div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-[#cc0000] to-[#ff6a00] p-4 text-white">
+            <div class="text-[10px] font-extrabold tracking-widest mb-3">💰 ANGGARAN & LAMPIRAN *</div>
+            <input id="nominal" type="number" placeholder="Nominal Rp" class="w-full bg-white text-black border-0 rounded-xl p-3.5 text-sm font-extrabold">
+            <div class="mt-3 bg-white/15 border border-white/20 rounded-xl p-3"><input id="f" type="file" class="w-full text-[11px] file:bg-white file:text-black file:border-0 file:rounded-lg file:px-3 file:py-1 file:font-bold"><div class="text-[9px] mt-2 opacity-80">Wajib, max 10MB</div></div>
+          </div>
+          <button id="btn" onclick="kirim()" class="w-full bg-[#0a0f1f] text-white py-4 rounded-2xl font-extrabold text-sm">🚀 Simpan Proposal</button>
+          <div id="msg" class="hidden p-3 rounded-xl text-[12px] text-center font-bold"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
 const db = supabase.createClient("https://xytowszjjghlcbdchyzl.supabase.co","sb_publishable_wsqs32rXUPxI1WPdg5U04g_-02KtVKd");
-function clearForm(){
-  ['nama_program','program_aps','prioritas_tpb','uraian_program','kegiatan','kecamatan','kelurahan','nominal'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('pilar_tpb').value=''; document.getElementById('kategori_wilayah').value=''; document.getElementById('f').value='';
+const USERS={staff:'sig123', sm:'sig123', direktur:'sig123', finance:'sig123', admin:'sig123'};
+function login(){
+  const u=document.getElementById('user').value.trim().toLowerCase(); const p=document.getElementById('pass').value.trim(); const m=document.getElementById('loginMsg');
+  if(USERS[u] && USERS[u]===p){ localStorage.setItem('csr_user',u); document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('formScreen').classList.remove('hidden'); document.getElementById('who').innerText=u.toUpperCase(); }
+  else { m.className='block p-2.5 rounded-xl bg-red-100 text-red-700 border text-[11px] text-center'; m.innerText='❌ Salah'; }
 }
+function logout(){ localStorage.removeItem('csr_user'); location.reload(); }
+if(localStorage.getItem('csr_user')){ document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('formScreen').classList.remove('hidden'); document.getElementById('who').innerText=localStorage.getItem('csr_user').toUpperCase(); }
+function clearForm(){ ['nama_program','program_aps','prioritas_tpb','uraian_program','kegiatan','kecamatan','kelurahan','nominal'].forEach(id=>document.getElementById(id).value=''); document.getElementById('pilar_tpb').value=''; document.getElementById('kategori_wilayah').value=''; document.getElementById('f').value=''; }
 async function kirim(){
   const btn=document.getElementById('btn'); const msg=document.getElementById('msg');
   try{
     const get=id=>document.getElementById(id).value.trim();
-    const staff_name=get('staff_name'), nama_program=get('nama_program'), program_aps=get('program_aps'), pilar_tpb=get('pilar_tpb'), prioritas_tpb=get('prioritas_tpb'), uraian_program=get('uraian_program'), kegiatan=get('kegiatan'), provinsi=get('provinsi'), kab_kota=get('kab_kota'), kecamatan=get('kecamatan'), kelurahan=get('kelurahan'), kategori_wilayah=get('kategori_wilayah'), nominal=get('nominal');
+    const vals={nama_program:get('nama_program'),program_aps:get('program_aps'),pilar_tpb:get('pilar_tpb'),prioritas_tpb:get('prioritas_tpb'),uraian_program:get('uraian_program'),kegiatan:get('kegiatan'),provinsi:get('provinsi'),kab_kota:get('kab_kota'),kecamatan:get('kecamatan'),kelurahan:get('kelurahan'),kategori_wilayah:get('kategori_wilayah'),nominal:get('nominal')};
     const file=document.getElementById('f').files[0];
-    if(!staff_name||!nama_program||!program_aps||!pilar_tpb||!prioritas_tpb||!uraian_program||!kegiatan||!provinsi||!kab_kota||!kecamatan||!kelurahan||!kategori_wilayah||!nominal||!file) throw new Error('Semua field wajib diisi + lampiran wajib');
-    btn.innerText='Menyimpan...'; btn.disabled=true;
+    if(Object.values(vals).some(v=>!v)||!file) throw new Error('Semua field & lampiran wajib!');
+    btn.innerText='⏳ Menyimpan...'; btn.disabled=true; msg.className='hidden';
     const path=Date.now()+'_'+file.name.replace(/\s/g,'_');
     const {error:upErr}=await db.storage.from('proposal-files').upload(path,file); if(upErr) throw upErr;
     const {data}=db.storage.from('proposal-files').getPublicUrl(path);
-    const {error}=await db.from('csr_proposals').insert([{nama_program,program_aps,pilar_tpb,prioritas_tpb,uraian_program,kegiatan,provinsi,kab_kota,kecamatan,kelurahan,kategori_wilayah,nominal:Number(nominal),file_name:file.name,file_url:data.publicUrl,tanggal_masuk:new Date().toISOString().slice(0,10),status:'Menunggu SM Approval'}]);
+    const {error}=await db.from('csr_proposals').insert([{...vals,nominal:Number(vals.nominal),file_name:file.name,file_url:data.publicUrl,tanggal_masuk:new Date().toISOString().slice(0,10),status:'Menunggu SM Approval',input_by:localStorage.getItem('csr_user')}]);
     if(error) throw error;
     clearForm();
-    msg.className='mt-3 p-3 rounded-xl text-xs bg-green-100 text-green-700 border block'; msg.innerHTML='✅ Berhasil! Proposal oleh <b>'+staff_name+'</b> tersimpan. Form sudah dikosongkan.';
-  }catch(e){ msg.className='mt-3 p-3 rounded-xl text-xs bg-red-100 text-red-700 border block'; msg.innerText='❌ '+e.message; }
-  finally{ btn.innerText='Simpan Proposal'; btn.disabled=false; }
+    msg.className='block p-3 rounded-xl text-[12px] text-center font-bold bg-green-100 text-green-700 border'; msg.innerHTML='✅ Berhasil! Form kosong lagi, siap input berikutnya.';
+  }catch(e){ msg.className='block p-3 rounded-xl text-[12px] text-center font-bold bg-red-100 text-red-700 border'; msg.innerText='❌ '+e.message; }
+  finally{ btn.innerText='🚀 Simpan Proposal'; btn.disabled=false; }
 }
 </script>
 </body>
